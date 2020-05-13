@@ -12,9 +12,15 @@ Scaffold buildScaffold(BuildContext context, Map<String, dynamic> attrs) {
     attrs['drawer']['type'],
     attrs['drawer']['attrs'],
   );
+  Widget body = buildWidget(
+    context,
+    attrs['body']['type'],
+    attrs['body']['attrs'],
+  );
   Scaffold(
     appBar: appBar,
     drawer: drawer,
+    body: body,
   );
 //  Scaffold(drawer: null,
 //    appBar: null,

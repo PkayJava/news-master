@@ -22,6 +22,7 @@
     <modules>
         <module>news-dao</module>
         <module>news-web</module>
+        <module>news-generator</module>
     </modules>
 
 </project>

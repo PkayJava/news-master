@@ -15,6 +15,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "News",
       theme: ThemeData(
         // Define the default brightness and colors.
         brightness: Brightness.dark,

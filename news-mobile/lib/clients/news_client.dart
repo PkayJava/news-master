@@ -8,7 +8,7 @@ class NewsClient {
 //  static final W185 = 'http://image.tmdb.org/t/p/w185';
 //  static final W780 = 'http://image.tmdb.org/t/p/w780';
 
-  final _baseUrl = 'http://192.168.2.12:8080/api';
+  final _baseUrl = 'http://192.168.1.6:8080/api';
 
   final _client = HttpClient();
 

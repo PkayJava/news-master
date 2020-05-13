@@ -23,9 +23,9 @@
         <wtp.version>2.0</wtp.version>
         <commons-dbcp2.version>2.7.0</commons-dbcp2.version>
 
-        <jooq.version>3.13.1</jooq.version>
+        <jooq.version>3.13.2</jooq.version>
         <flyway.version>6.4.1</flyway.version>
-        <mysql.version>8.0.19</mysql.version>
+        <mysql.version>8.0.20</mysql.version>
 
         <db.name>news</db.name>
         <db.host>192.168.1.6</db.host>

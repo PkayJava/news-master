@@ -12,11 +12,10 @@
     </parent>
 
     <groupId>com.angkorteam.news</groupId>
-    <artifactId>news-web</artifactId>
+    <artifactId>news-generator</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
 
-    <name>news-web</name>
+    <name>news-generator</name>
 
     <properties>
         <guava.version>29.0-jre</guava.version>
@@ -106,7 +105,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-<!--            <scope>provided</scope>-->
         </dependency>
 
         <dependency>
@@ -170,7 +168,7 @@
 
     <build>
 
-        <finalName>ROOT</finalName>
+        <finalName>news-generator</finalName>
 
         <plugins>
 

@@ -123,6 +123,25 @@ public class PageController {
                         }
                     }
                 }
+            } else if ("AppBar".equals(widgetObject.getType())) {
+                if (attributes.get("leading") != null && !"".equals(attributes.get("leading"))) {
+                    String temp = (String) attributes.get("leading");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> leading = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (leading != null) {
+                            attributes.put("leading", leading);
+                        }
+                    }
+                }
+                if (attributes.get("title") != null && !"".equals(attributes.get("title"))) {
+                    String temp = (String) attributes.get("title");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> title = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (title != null) {
+                            attributes.put("title", title);
+                        }
+                    }
+                }
             } else if ("Container".equals(widgetObject.getType())) {
                 if (attributes.get("child") != null && !"".equals(attributes.get("child"))) {
                     String temp = (String) attributes.get("child");
