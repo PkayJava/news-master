@@ -142,7 +142,7 @@ public class PageController {
                         }
                     }
                 }
-            } else if ("Container".equals(widgetObject.getType())) {
+            } else if ("Container".equals(widgetObject.getType()) || "Center".equals(widgetObject.getType())) {
                 if (attributes.get("child") != null && !"".equals(attributes.get("child"))) {
                     String temp = (String) attributes.get("child");
                     if (temp != null && !"".equals(temp)) {
