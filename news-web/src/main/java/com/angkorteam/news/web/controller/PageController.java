@@ -6,6 +6,7 @@ import com.angkorteam.news.dao.tables.daos.WidgetDAO;
 import com.angkorteam.news.dao.tables.pojos.PageObject;
 import com.angkorteam.news.dao.tables.pojos.WidgetAttributeObject;
 import com.angkorteam.news.dao.tables.pojos.WidgetObject;
+import com.angkorteam.news.web.boot.AppProperties;
 import com.angkorteam.news.web.exception.NotFoundException;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
@@ -27,10 +28,13 @@ public class PageController {
 
     private final WidgetAttributeDAO widgetAttributeDAO;
 
-    public PageController(PageDAO pageDAO, WidgetDAO widgetDAO, WidgetAttributeDAO widgetAttributeDAO) {
+    private final AppProperties properties;
+
+    public PageController(PageDAO pageDAO, WidgetDAO widgetDAO, WidgetAttributeDAO widgetAttributeDAO, AppProperties properties) {
         this.pageDAO = pageDAO;
         this.widgetDAO = widgetDAO;
         this.widgetAttributeDAO = widgetAttributeDAO;
+        this.properties = properties;
     }
 
     @RequestMapping(path = "/{uuid}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -68,6 +72,9 @@ public class PageController {
         }
         Map<String, Object> widget = new HashMap<>();
         widget.put("type", widgetObject.getType());
+        if (this.properties.isDebug()) {
+            widget.put("__uuid", uuid);
+        }
         if (!widgetAttributeObjects.get(widgetObject.getUuid()).isEmpty()) {
             Map<String, Object> attributes = new HashMap<>();
             for (WidgetAttributeObject item : widgetAttributeObjects.get(widgetObject.getUuid())) {
