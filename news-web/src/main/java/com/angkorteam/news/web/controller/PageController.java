@@ -74,25 +74,56 @@ public class PageController {
                 attributes.put(item.getAttrName(), item.getAttrValue());
             }
             widget.put("attrs", attributes);
-            if (attributes.get("children") != null && !"".equals(attributes.get("children"))) {
-                String[] temps = StringUtils.split((String) attributes.get("children"), ',');
-                List<Map<String, Object>> children = new ArrayList<>(temps.length);
-                for (String temp : temps) {
-                    Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
-                    if (child != null) {
-                        children.add(child);
+            if ("Row".equals(widgetObject.getType()) || "Column".equals(widgetObject.getType())) {
+                if (attributes.get("children") != null && !"".equals(attributes.get("children"))) {
+                    String[] temps = StringUtils.split((String) attributes.get("children"), ',');
+                    List<Map<String, Object>> children = new ArrayList<>(temps.length);
+                    for (String temp : temps) {
+                        Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (child != null) {
+                            children.add(child);
+                        }
+                    }
+                    if (!children.isEmpty()) {
+                        attributes.put("children", children);
                     }
                 }
-                if (!children.isEmpty()) {
-                    attributes.put("children", children);
+            } else if ("Scaffold".equals(widgetObject.getType())) {
+                if (attributes.get("appBar") != null && !"".equals(attributes.get("appBar"))) {
+                    String temp = (String) attributes.get("appBar");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> appBar = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (appBar != null) {
+                            attributes.put("appBar", appBar);
+                        }
+                    }
                 }
-            }
-            if (attributes.get("child") != null && !"".equals(attributes.get("child"))) {
-                String temp = (String) attributes.get("child");
-                if (temp != null && !"".equals(temp)) {
-                    Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
-                    if (child != null) {
-                        attributes.put("child", child);
+                if (attributes.get("drawer") != null && !"".equals(attributes.get("drawer"))) {
+                    String temp = (String) attributes.get("drawer");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> drawer = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (drawer != null) {
+                            attributes.put("drawer", drawer);
+                        }
+                    }
+                }
+                if (attributes.get("body") != null && !"".equals(attributes.get("body"))) {
+                    String temp = (String) attributes.get("body");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> body = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (body != null) {
+                            attributes.put("body", body);
+                        }
+                    }
+                }
+            } else if ("Container".equals(widgetObject.getType())) {
+                if (attributes.get("child") != null && !"".equals(attributes.get("child"))) {
+                    String temp = (String) attributes.get("child");
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (child != null) {
+                            attributes.put("child", child);
+                        }
                     }
                 }
             }
