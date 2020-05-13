@@ -1,0 +1,5 @@
+target/
+.classpath
+.project
+.settings/
+news-web.iml
