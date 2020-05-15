@@ -186,6 +186,16 @@ public class PageController {
                         }
                     }
                 }
+            } else if (FloatingActionButton.class.getSimpleName().equals(widgetObject.getType())) {
+                if (attributes.get(FloatingActionButtonAttribute.child.name()) != null && !"".equals(attributes.get(FloatingActionButtonAttribute.child.name()))) {
+                    String temp = (String) attributes.get(FloatingActionButtonAttribute.child.name());
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (child != null) {
+                            attributes.put(FloatingActionButtonAttribute.child.name(), child);
+                        }
+                    }
+                }
             }
         }
         return widget;
