@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `widget`;
+DROP TABLE IF EXISTS `object`;
 
-CREATE TABLE `widget` (
+CREATE TABLE `object` (
 	sys_id                     BIGINT(19)   NOT NULL AUTO_INCREMENT,
 	sys_version                BIGINT(19)   NOT NULL DEFAULT 1,
 	sys_last_modified          TIMESTAMP    NOT NULL DEFAULT NOW(),
@@ -10,8 +10,8 @@ CREATE TABLE `widget` (
 	PRIMARY KEY (sys_id)
 );
 
-CREATE INDEX widget_001 ON `widget`(sys_version);
-CREATE INDEX widget_002 ON `widget`(sys_last_modified);
-CREATE UNIQUE INDEX widget_003 ON `widget`(uuid);
-CREATE INDEX widget_005 ON `widget`(type);
-CREATE INDEX widget_006 ON `widget`(page_uuid);
+CREATE INDEX object_001 ON `object`(sys_version);
+CREATE INDEX object_002 ON `object`(sys_last_modified);
+CREATE UNIQUE INDEX object_003 ON `object`(uuid);
+CREATE INDEX object_005 ON `object`(type);
+CREATE INDEX object_006 ON `object`(page_uuid);

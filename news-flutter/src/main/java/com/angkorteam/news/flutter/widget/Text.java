@@ -1,8 +1,9 @@
 package com.angkorteam.news.flutter.widget;
 
-import com.angkorteam.news.dao.tables.WidgetAttributeTable;
-import com.angkorteam.news.dao.tables.records.WidgetAttributeRecord;
+import com.angkorteam.news.dao.tables.ObjectAttributeTable;
+import com.angkorteam.news.dao.tables.records.ObjectAttributeRecord;
 import com.angkorteam.news.flutter.Page;
+import com.angkorteam.news.flutter.common.AttrType;
 import com.angkorteam.news.flutter.common.Entry;
 import com.angkorteam.news.flutter.common.Widget;
 import org.jooq.DSLContext;
@@ -20,14 +21,14 @@ public class Text extends Widget<TextAttribute> {
 
     @Override
     public void store(DSLContext context, Page page) {
-        WidgetAttributeRecord attr = context.newRecord(WidgetAttributeTable.INSTANCE);
+        ObjectAttributeRecord attr = context.newRecord(ObjectAttributeTable.INSTANCE);
         attr.setUuid(UUID.randomUUID().toString());
         attr.setPageUuid(page.getUuid());
-        attr.setWidgetUuid(this.uuid);
+        attr.setObjectUuid(this.uuid);
         attr.setAttrName("data");
+        attr.setAttrType(AttrType.Simple.name());
         attr.setAttrValue(this.data);
         attr.store();
-
         super.store(context, page);
     }
 

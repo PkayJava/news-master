@@ -1,8 +1,8 @@
 package com.angkorteam.news.web;
 
+import com.angkorteam.news.dao.tables.daos.ObjectAttributeDAO;
+import com.angkorteam.news.dao.tables.daos.ObjectDAO;
 import com.angkorteam.news.dao.tables.daos.PageDAO;
-import com.angkorteam.news.dao.tables.daos.WidgetAttributeDAO;
-import com.angkorteam.news.dao.tables.daos.WidgetDAO;
 import com.angkorteam.news.web.boot.AppProperties;
 import com.angkorteam.news.web.factory.JavaMailSenderFactoryBean;
 import com.angkorteam.news.web.factory.WicketFactory;
@@ -129,13 +129,13 @@ public class BootApplication {
     }
 
     @Bean
-    public WidgetDAO createWidgetDAO(DSLContext context) {
-        return new WidgetDAO(context.configuration());
+    public ObjectDAO createObjectDAO(DSLContext context) {
+        return new ObjectDAO(context.configuration());
     }
 
     @Bean
-    public WidgetAttributeDAO createWidgetAttributeDAO(DSLContext context) {
-        return new WidgetAttributeDAO(context.configuration());
+    public ObjectAttributeDAO createObjectAttributeDAO(DSLContext context) {
+        return new ObjectAttributeDAO(context.configuration());
     }
 
 }

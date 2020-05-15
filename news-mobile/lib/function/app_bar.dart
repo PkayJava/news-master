@@ -14,8 +14,10 @@ AppBar buildAppBar(BuildContext context, Map<String, dynamic> attrs) {
         attrs['primary'] == 'yes');
   }
 
-  Widget leading =
-      buildWidget(context, attrs['leading']['type'], attrs['leading']['attrs']);
+  Widget leading = attrs['leading'] != null
+      ? buildWidget(
+          context, attrs['leading']['type'], attrs['leading']['attrs'])
+      : null;
 
   Widget title =
       buildWidget(context, attrs['title']['type'], attrs['title']['attrs']);

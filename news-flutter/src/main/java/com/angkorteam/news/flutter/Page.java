@@ -46,7 +46,7 @@ public class Page {
     public void store(DSLContext context) {
         PageRecord pageRecord = context.newRecord(PageTable.INSTANCE);
         pageRecord.setUuid(this.uuid);
-        pageRecord.setWidgetUuid(this.widget.getUuid());
+        pageRecord.setObjectUuid(this.widget.getUuid());
         pageRecord.setTitle(this.title);
         pageRecord.store();
         this.widget.store(context, this);

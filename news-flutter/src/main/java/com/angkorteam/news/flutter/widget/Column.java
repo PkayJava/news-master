@@ -1,7 +1,7 @@
 package com.angkorteam.news.flutter.widget;
 
-import com.angkorteam.news.dao.tables.WidgetAttributeTable;
-import com.angkorteam.news.dao.tables.records.WidgetAttributeRecord;
+import com.angkorteam.news.dao.tables.ObjectAttributeTable;
+import com.angkorteam.news.dao.tables.records.ObjectAttributeRecord;
 import com.angkorteam.news.flutter.Page;
 import com.angkorteam.news.flutter.common.Entry;
 import com.angkorteam.news.flutter.common.MainAxisAlignment;
@@ -29,31 +29,7 @@ public class Column extends Widget<ColumnAttribute> {
 
     @Override
     public void store(DSLContext context, Page page) {
-        if (this._attrs.containsKey(ColumnAttribute.mainAxisAlignment)) {
-            MainAxisAlignment mainAxisAlignment = (MainAxisAlignment) this._attrs.get(ColumnAttribute.mainAxisAlignment);
-            WidgetAttributeRecord attr = context.newRecord(WidgetAttributeTable.INSTANCE);
-            attr.setUuid(UUID.randomUUID().toString());
-            attr.setPageUuid(page.getUuid());
-            attr.setWidgetUuid(this.uuid);
-            attr.setAttrName(ColumnAttribute.mainAxisAlignment.name());
-            attr.setAttrValue(mainAxisAlignment.name());
-            attr.store();
-        }
-        if (this._attrs.containsKey(ColumnAttribute.children)) {
-            Widget[] children = (Widget[]) this._attrs.get(ColumnAttribute.children);
-            List<String> ids = new ArrayList<>(children.length);
-            for (Widget child : children) {
-                child.store(context, page);
-                ids.add(child.getUuid());
-            }
-            WidgetAttributeRecord attr = context.newRecord(WidgetAttributeTable.INSTANCE);
-            attr.setUuid(UUID.randomUUID().toString());
-            attr.setPageUuid(page.getUuid());
-            attr.setWidgetUuid(this.uuid);
-            attr.setAttrName(ColumnAttribute.children.name());
-            attr.setAttrValue(StringUtils.join(ids, ","));
-            attr.store();
-        }
+        store(context, page, ColumnAttribute.values());
         super.store(context, page);
     }
 }

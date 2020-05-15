@@ -6,7 +6,7 @@ CREATE TABLE `page` (
 	sys_last_modified          TIMESTAMP    NOT NULL DEFAULT NOW(),
 	uuid                       VARCHAR(40)  NOT NULL,
 	title                      VARCHAR(768) NOT NULL, -- 768
-	widget_uuid                VARCHAR(40)  NULL,
+	object_uuid                VARCHAR(40)  NULL,
 	PRIMARY KEY (sys_id)
 );
 
@@ -14,4 +14,4 @@ CREATE INDEX page_001 ON `page`(sys_version);
 CREATE INDEX page_002 ON `page`(sys_last_modified);
 CREATE UNIQUE INDEX page_003 ON `page`(uuid);
 CREATE INDEX page_005 ON `page`(title);
-CREATE INDEX page_006 ON `page`(widget_uuid);
+CREATE INDEX page_006 ON `page`(object_uuid);

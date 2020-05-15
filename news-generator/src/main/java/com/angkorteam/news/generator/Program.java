@@ -1,8 +1,8 @@
 package com.angkorteam.news.generator;
 
+import com.angkorteam.news.dao.tables.ObjectAttributeTable;
+import com.angkorteam.news.dao.tables.ObjectTable;
 import com.angkorteam.news.dao.tables.PageTable;
-import com.angkorteam.news.dao.tables.WidgetAttributeTable;
-import com.angkorteam.news.dao.tables.WidgetTable;
 import com.angkorteam.news.flutter.Page;
 import com.angkorteam.news.flutter.common.Icons;
 import com.angkorteam.news.flutter.common.MainAxisAlignment;
@@ -44,8 +44,8 @@ public class Program {
 
         DSLContext context = DSL.using(dataSource, SQLDialect.MYSQL, settings);
 
-        context.deleteFrom(WidgetAttributeTable.INSTANCE).execute();
-        context.deleteFrom(WidgetTable.INSTANCE).execute();
+        context.deleteFrom(ObjectAttributeTable.INSTANCE).execute();
+        context.deleteFrom(ObjectTable.INSTANCE).execute();
         context.deleteFrom(PageTable.INSTANCE).execute();
 
         Page page = new Page("uuid_001");
