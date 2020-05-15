@@ -10,16 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("News"),
-        leading: Icon(Icons.aspect_ratio),
-      ),
-      body: FutureBuilder(
-        builder: buildPage,
-        future: client.pageDetail(
-          pageId: 'uuid_001',
-        ),
+    return FutureBuilder(
+      builder: buildPage,
+      future: client.pageDetail(
+        pageId: 'uuid_001',
       ),
     );
   }

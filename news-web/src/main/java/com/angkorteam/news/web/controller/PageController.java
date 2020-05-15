@@ -6,6 +6,7 @@ import com.angkorteam.news.dao.tables.daos.WidgetDAO;
 import com.angkorteam.news.dao.tables.pojos.PageObject;
 import com.angkorteam.news.dao.tables.pojos.WidgetAttributeObject;
 import com.angkorteam.news.dao.tables.pojos.WidgetObject;
+import com.angkorteam.news.flutter.widget.*;
 import com.angkorteam.news.web.boot.AppProperties;
 import com.angkorteam.news.web.exception.NotFoundException;
 import com.google.common.collect.Maps;
@@ -81,9 +82,9 @@ public class PageController {
                 attributes.put(item.getAttrName(), item.getAttrValue());
             }
             widget.put("attrs", attributes);
-            if ("Row".equals(widgetObject.getType()) || "Column".equals(widgetObject.getType())) {
-                if (attributes.get("children") != null && !"".equals(attributes.get("children"))) {
-                    String[] temps = StringUtils.split((String) attributes.get("children"), ',');
+            if (Column.class.getSimpleName().equals(widgetObject.getType())) {
+                if (attributes.get(ColumnAttribute.children.name()) != null && !"".equals(attributes.get(ColumnAttribute.children.name()))) {
+                    String[] temps = StringUtils.split((String) attributes.get(ColumnAttribute.children.name()), ',');
                     List<Map<String, Object>> children = new ArrayList<>(temps.length);
                     for (String temp : temps) {
                         Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
@@ -92,16 +93,30 @@ public class PageController {
                         }
                     }
                     if (!children.isEmpty()) {
-                        attributes.put("children", children);
+                        attributes.put(ColumnAttribute.children.name(), children);
                     }
                 }
-            } else if ("Scaffold".equals(widgetObject.getType())) {
-                if (attributes.get("appBar") != null && !"".equals(attributes.get("appBar"))) {
-                    String temp = (String) attributes.get("appBar");
+            } else if (Row.class.getSimpleName().equals(widgetObject.getType())) {
+                if (attributes.get(RowAttribute.children.name()) != null && !"".equals(attributes.get(RowAttribute.children.name()))) {
+                    String[] temps = StringUtils.split((String) attributes.get(RowAttribute.children.name()), ',');
+                    List<Map<String, Object>> children = new ArrayList<>(temps.length);
+                    for (String temp : temps) {
+                        Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (child != null) {
+                            children.add(child);
+                        }
+                    }
+                    if (!children.isEmpty()) {
+                        attributes.put(RowAttribute.children.name(), children);
+                    }
+                }
+            } else if (Scaffold.class.getSimpleName().equals(widgetObject.getType())) {
+                if (attributes.get(ScaffoldAttribute.appBar.name()) != null && !"".equals(attributes.get(ScaffoldAttribute.appBar.name()))) {
+                    String temp = (String) attributes.get(ScaffoldAttribute.appBar.name());
                     if (temp != null && !"".equals(temp)) {
                         Map<String, Object> appBar = renderWidget(widgetAttributeObjects, widgetObjects, temp);
                         if (appBar != null) {
-                            attributes.put("appBar", appBar);
+                            attributes.put(ScaffoldAttribute.appBar.name(), appBar);
                         }
                     }
                 }
@@ -114,16 +129,25 @@ public class PageController {
                         }
                     }
                 }
-                if (attributes.get("body") != null && !"".equals(attributes.get("body"))) {
-                    String temp = (String) attributes.get("body");
+                if (attributes.get(ScaffoldAttribute.body.name()) != null && !"".equals(attributes.get(ScaffoldAttribute.body.name()))) {
+                    String temp = (String) attributes.get(ScaffoldAttribute.body.name());
                     if (temp != null && !"".equals(temp)) {
                         Map<String, Object> body = renderWidget(widgetAttributeObjects, widgetObjects, temp);
                         if (body != null) {
-                            attributes.put("body", body);
+                            attributes.put(ScaffoldAttribute.body.name(), body);
                         }
                     }
                 }
-            } else if ("AppBar".equals(widgetObject.getType())) {
+                if (attributes.get(ScaffoldAttribute.floatingActionButton.name()) != null && !"".equals(attributes.get(ScaffoldAttribute.floatingActionButton.name()))) {
+                    String temp = (String) attributes.get(ScaffoldAttribute.floatingActionButton.name());
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> body = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (body != null) {
+                            attributes.put(ScaffoldAttribute.floatingActionButton.name(), body);
+                        }
+                    }
+                }
+            } else if (AppBar.class.getSimpleName().equals(widgetObject.getType())) {
                 if (attributes.get("leading") != null && !"".equals(attributes.get("leading"))) {
                     String temp = (String) attributes.get("leading");
                     if (temp != null && !"".equals(temp)) {
@@ -133,22 +157,32 @@ public class PageController {
                         }
                     }
                 }
-                if (attributes.get("title") != null && !"".equals(attributes.get("title"))) {
-                    String temp = (String) attributes.get("title");
+                if (attributes.get(AppBarAttribute.title.name()) != null && !"".equals(attributes.get(AppBarAttribute.title.name()))) {
+                    String temp = (String) attributes.get(AppBarAttribute.title.name());
                     if (temp != null && !"".equals(temp)) {
                         Map<String, Object> title = renderWidget(widgetAttributeObjects, widgetObjects, temp);
                         if (title != null) {
-                            attributes.put("title", title);
+                            attributes.put(AppBarAttribute.title.name(), title);
                         }
                     }
                 }
-            } else if ("Container".equals(widgetObject.getType()) || "Center".equals(widgetObject.getType())) {
+            } else if ("Container".equals(widgetObject.getType())) {
                 if (attributes.get("child") != null && !"".equals(attributes.get("child"))) {
                     String temp = (String) attributes.get("child");
                     if (temp != null && !"".equals(temp)) {
                         Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
                         if (child != null) {
                             attributes.put("child", child);
+                        }
+                    }
+                }
+            } else if (Center.class.getSimpleName().equals(widgetObject.getType())) {
+                if (attributes.get(CenterAttribute.child.name()) != null && !"".equals(attributes.get(CenterAttribute.child.name()))) {
+                    String temp = (String) attributes.get(CenterAttribute.child.name());
+                    if (temp != null && !"".equals(temp)) {
+                        Map<String, Object> child = renderWidget(widgetAttributeObjects, widgetObjects, temp);
+                        if (child != null) {
+                            attributes.put(CenterAttribute.child.name(), child);
                         }
                     }
                 }
