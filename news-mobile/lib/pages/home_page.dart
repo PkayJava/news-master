@@ -25,8 +25,8 @@ class HomePage extends StatelessWidget {
     } else {
       return buildWidget(
         context,
-        snapshot.data.widget['type'],
-        snapshot.data.widget['attrs'],
+        snapshot.data.object['type'],
+        snapshot.data.object['attrs'],
       );
     }
   }

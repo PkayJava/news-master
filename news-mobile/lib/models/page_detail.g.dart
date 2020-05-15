@@ -9,12 +9,12 @@ part of 'page_detail.dart';
 PageDetailResponse _$PageDetailResponseFromJson(Map<String, dynamic> json) {
   return PageDetailResponse(
     title: json['title'] as String,
-    widget: json['widget'] as Map<String, dynamic>,
+    object: json['object'] as Map<String, dynamic>,
   );
 }
 
 Map<String, dynamic> _$PageDetailResponseToJson(PageDetailResponse instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'widget': instance.widget,
+      'object': instance.object,
     };

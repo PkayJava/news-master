@@ -6,11 +6,11 @@ part 'page_detail.g.dart';
 class PageDetailResponse {
   String title;
 
-  Map<String, dynamic> widget;
+  Map<String, dynamic> object;
 
   PageDetailResponse({
     this.title,
-    this.widget,
+    this.object,
   });
 
   factory PageDetailResponse.fromJson(Map<String, dynamic> json) =>

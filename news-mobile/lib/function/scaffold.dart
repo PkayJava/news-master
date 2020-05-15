@@ -19,9 +19,15 @@ Scaffold buildScaffold(BuildContext context, Map<String, dynamic> attrs) {
     attrs['body']['type'],
     attrs['body']['attrs'],
   );
+  Widget floatingActionButton = buildWidget(
+    context,
+    attrs['floatingActionButton']['type'],
+    attrs['floatingActionButton']['attrs'],
+  );
   return Scaffold(
     appBar: appBar,
     drawer: drawer,
     body: body,
+    floatingActionButton: floatingActionButton,
   );
 }
