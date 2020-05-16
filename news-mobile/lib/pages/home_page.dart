@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/clients/news_client.dart';
 import 'package:mobile/function/widget.dart';
-import 'package:mobile/models/page_detail.dart';
+import 'package:mobile/models/page_detail_response.dart';
 
 class HomePage extends StatelessWidget {
   final NewsClient client;
@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
       return Container();
     } else {
       return buildWidget(
+        this.client,
         context,
         snapshot.data.object['type'],
         snapshot.data.object['attrs'],

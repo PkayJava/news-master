@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 import 'package:mobile/function/app_bar.dart';
 import 'package:mobile/function/center.dart';
 import 'package:mobile/function/column.dart';
@@ -8,24 +9,25 @@ import 'package:mobile/function/scaffold.dart';
 import 'package:mobile/function/text.dart';
 
 Widget buildWidget(
+  NewsClient client,
   BuildContext context,
   String type,
   Map<String, dynamic> attrs,
 ) {
   if (type == 'Text') {
-    return buildText(context, attrs);
+    return buildText(client, context, attrs);
   } else if (type == 'Column') {
-    return buildColumn(context, attrs);
+    return buildColumn(client, context, attrs);
   } else if (type == 'Scaffold') {
-    return buildScaffold(context, attrs);
+    return buildScaffold(client, context, attrs);
   } else if (type == 'AppBar') {
-    return buildAppBar(context, attrs);
+    return buildAppBar(client, context, attrs);
   } else if (type == 'Center') {
-    return buildCenter(context, attrs);
+    return buildCenter(client, context, attrs);
   } else if (type == 'Icon') {
-    return buildIcon(context, attrs);
+    return buildIcon(client, context, attrs);
   } else if (type == 'FloatingActionButton') {
-    return buildFloatingActionButton(context, attrs);
+    return buildFloatingActionButton(client, context, attrs);
   } else {
     return Text('Unknown');
   }

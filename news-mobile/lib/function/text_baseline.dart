@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-TextBaseline lookupTextBaseline({
+TextBaseline lookupTextBaseline(
+  NewsClient client, {
   @required String value,
   @required TextBaseline fallback,
 }) {

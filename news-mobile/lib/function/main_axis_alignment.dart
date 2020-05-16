@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-MainAxisAlignment lookupMainAxisAlignment({
+MainAxisAlignment lookupMainAxisAlignment(
+  NewsClient client, {
   @required String value,
   MainAxisAlignment fallback = MainAxisAlignment.start,
 }) {

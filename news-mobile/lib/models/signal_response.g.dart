@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'page_detail.dart';
+part of 'signal_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PageDetailResponse _$PageDetailResponseFromJson(Map<String, dynamic> json) {
-  return PageDetailResponse(
+SignalResponse _$SignalResponseFromJson(Map<String, dynamic> json) {
+  return SignalResponse(
     title: json['title'] as String,
     object: json['object'] as Map<String, dynamic>,
   );
 }
 
-Map<String, dynamic> _$PageDetailResponseToJson(PageDetailResponse instance) =>
+Map<String, dynamic> _$SignalResponseToJson(SignalResponse instance) =>
     <String, dynamic>{
       'title': instance.title,
       'object': instance.object,

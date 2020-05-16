@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-IconData buildIconData(BuildContext context, @required String value) {
+IconData lookupIconData(NewsClient client, {@required String value}) {
   IconData iconData;
   switch (value) {
     case 'threesixty':

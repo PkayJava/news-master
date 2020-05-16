@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:mobile/models/page_detail.dart';
+import 'package:mobile/models/page_detail_response.dart';
 
 class NewsClient {
 //  static final W185 = 'http://image.tmdb.org/t/p/w185';
@@ -31,6 +31,22 @@ class NewsClient {
       String text = (await response.transform(Utf8Decoder()).toList()).join();
       Map<String, dynamic> json = jsonDecode(text);
       return PageDetailResponse.fromJson(json);
+    } catch (error) {
+      print(error);
+      return null;
+    }
+  }
+
+  Future<void> signal({
+    @required String uuid,
+  }) async {
+    final url = '${this._baseUrl}/signal/$uuid';
+    try {
+      HttpClientRequest request = await this._client.getUrl(Uri.parse(url));
+      HttpClientResponse response = await request.close();
+      String text = (await response.transform(Utf8Decoder()).toList()).join();
+      Map<String, dynamic> json = jsonDecode(text);
+//      return PageDetailResponse.fromJson(json);
     } catch (error) {
       print(error);
       return null;

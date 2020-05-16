@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-TextDirection lookupTextDirection({
+TextDirection lookupTextDirection(
+  NewsClient client, {
   @required String value,
   TextDirection fallback = TextDirection.ltr,
 }) {

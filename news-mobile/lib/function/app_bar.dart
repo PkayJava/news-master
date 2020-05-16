@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 import 'package:mobile/function/widget.dart';
 
-AppBar buildAppBar(BuildContext context, Map<String, dynamic> attrs) {
+AppBar buildAppBar(
+    NewsClient client, BuildContext context, Map<String, dynamic> attrs) {
   double toolbarOpacity = 1.0;
   if (attrs['toolbarOpacity'] != null) {
     toolbarOpacity = double.parse(attrs['toolbarOpacity']);
@@ -16,11 +18,19 @@ AppBar buildAppBar(BuildContext context, Map<String, dynamic> attrs) {
 
   Widget leading = attrs['leading'] != null
       ? buildWidget(
-          context, attrs['leading']['type'], attrs['leading']['attrs'])
+          client,
+          context,
+          attrs['leading']['type'],
+          attrs['leading']['attrs'],
+        )
       : null;
 
-  Widget title =
-      buildWidget(context, attrs['title']['type'], attrs['title']['attrs']);
+  Widget title = buildWidget(
+    client,
+    context,
+    attrs['title']['type'],
+    attrs['title']['attrs'],
+  );
 
   double elevation = 0;
   if (attrs['elevation'] != null) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-MainAxisSize lookupMainAxisSize({
+MainAxisSize lookupMainAxisSize(
+  NewsClient client, {
   @required String value,
   MainAxisSize fallback = MainAxisSize.max,
 }) {

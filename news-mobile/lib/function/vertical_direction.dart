@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-VerticalDirection lookupVerticalDirection({
+VerticalDirection lookupVerticalDirection(
+  NewsClient client, {
   @required String value,
   VerticalDirection fallback = VerticalDirection.down,
 }) {

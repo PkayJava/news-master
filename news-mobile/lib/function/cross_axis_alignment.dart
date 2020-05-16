@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/clients/news_client.dart';
 
-CrossAxisAlignment lookupCrossAxisAlignment({
+CrossAxisAlignment lookupCrossAxisAlignment(
+  NewsClient client, {
   @required String value,
   CrossAxisAlignment fallback = CrossAxisAlignment.center,
 }) {
