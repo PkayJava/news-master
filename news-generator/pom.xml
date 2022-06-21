@@ -38,7 +38,7 @@
         <mail.version>1.4.7</mail.version>
         <joda-time.version>2.10.6</joda-time.version>
         <commons-dbcp2.version>2.7.0</commons-dbcp2.version>
-        <mysql.version>8.0.20</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <jooq.version>3.13.2</jooq.version>
         <reflections.version>0.9.12</reflections.version>
         <commons-text.version>1.8</commons-text.version>
